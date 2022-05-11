@@ -12,7 +12,7 @@ function Home() {
     <div className='Home'>
       <Searcher />
       {error && <div className='error'>{error}</div>}
-      { loading ? <p>Loading...</p> : <PokeduxList/> } 
+      { loading ? <p>Loading...</p> : <PokeduxList pokemons={pokemonList}/> } 
     </div>
   );
 }
