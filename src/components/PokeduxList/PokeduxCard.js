@@ -3,14 +3,15 @@ import { MAIN_COLOR, FAV_COLOR } from '../../utils/constants'
 import './style.css'
 
 const PokeduxCard = ({ pokemon }) => {
+  const { name, types, sprites } = pokemon;
   if (!pokemon) return null
   return (
     <Grid.Column mobile={16} tablet={8} computer={4}>
       <div className='PokeduxCard'>
         <Icon name='favorite' color={FAV_COLOR}/>
-        <Image centered src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" />
+        <Image centered src={sprites.front_default} />
         <h2 className='PokeduxCard-title '>{pokemon.name}</h2>
-        <Label color={MAIN_COLOR}>Normal</Label>
+        {types.map(type => <Label key={`${pokemon.id}-${type.name}`} color={MAIN_COLOR}>{type.type.name}</Label>)}
       </div>
     </Grid.Column>
     

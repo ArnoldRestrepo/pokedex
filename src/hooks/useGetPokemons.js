@@ -1,3 +1,4 @@
+import axios from '../services/axios';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getPokemons } from '../api/getPokemons';
@@ -13,7 +14,10 @@ const useGetPokemons = () => {
       setIsLoading(true);
       try {
         const result = await getPokemons({ limit: 151 });
-        dispatch(setPokemon(result?.results));
+        const pokemonList = result.results;
+        const pokemonsResult = await Promise.all(pokemonList.map( async pokemon => axios.get(pokemon.url)))
+        const pokemonsData = pokemonsResult.map(pokemon => pokemon.data)
+        dispatch(setPokemon(pokemonsData))
       } catch (error) {
         setError(error);
       }
