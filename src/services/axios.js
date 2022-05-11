@@ -1,6 +1,6 @@
-import axios from "axios"
+import axios from 'axios';
 
-const URL = process.env.POKEAPI_URL || "https://pokeapi.co/api/v2/"
+const URL = process.env.POKEAPI || 'https://pokeapi.co/api/v2';
 
 const axiosInstance = axios.create({
   baseURL: URL,
@@ -8,6 +8,6 @@ const axiosInstance = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-})
+});
 
 export default axiosInstance;

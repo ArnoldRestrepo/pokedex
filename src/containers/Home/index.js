@@ -1,19 +1,18 @@
-import React from 'react';
-import { getProkemons } from '../../api/getProkemons';
+import {useSelector} from 'react-redux';
 import PokeduxList from '../../components/PokeduxList';
 import Searcher from '../../components/Searcher';
 import useGetPokemons  from '../../hooks/useGetPokemons';
 import './styles.css';
 
 function Home() {
-  const [result, loading, error] = useGetPokemons();
-  
-  console.log(result);
-  
+  const [loading, error] = useGetPokemons();
+  const pokemonList = useSelector(state => state.app.pokemonList);
+
   return (
     <div className='Home'>
       <Searcher />
-      <PokeduxList/>
+      {error && <div className='error'>{error}</div>}
+      { loading ? <p>Loading...</p> : <PokeduxList/> } 
     </div>
   );
 }

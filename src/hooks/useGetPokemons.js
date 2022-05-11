@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { getProkemons } from '../api/getProkemons';
+import { useDispatch } from 'react-redux';
+import { getPokemons } from '../api/getPokemons';
+import { setPokemon } from '../actions/';
 
 const useGetPokemons = () => {
-  const [pokemons, setPokemons] = useState(null);
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -10,8 +12,8 @@ const useGetPokemons = () => {
     async function executeAsyncFunction (){ 
       setIsLoading(true);
       try {
-        const result = await getProkemons({ limit: 151 });
-        setPokemons(result?.data);
+        const result = await getPokemons({ limit: 151 });
+        dispatch(setPokemon(result?.results));
       } catch (error) {
         setError(error);
       }
@@ -20,7 +22,7 @@ const useGetPokemons = () => {
     executeAsyncFunction();
   },[]);
 
-  return [pokemons, isLoading, error];
+  return [isLoading, error];
 }
 
 export default useGetPokemons;
