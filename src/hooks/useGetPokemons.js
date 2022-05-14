@@ -2,7 +2,7 @@ import axios from '../services/axios';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getPokemons } from '../api/getPokemons';
-import { setPokemon, setError } from '../actions/';
+import { setPokemon, setError } from '../redux/actions/';
 
 const useGetPokemons = () => {
   const dispatch = useDispatch();
