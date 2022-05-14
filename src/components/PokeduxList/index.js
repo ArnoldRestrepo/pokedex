@@ -5,7 +5,7 @@ import PokeduxCard from './PokeduxCard';
 const PokeduxList = ({ pokemons  }) => { 
   return (
     <Grid className='PokeduxList'>
-      {pokemons.map(pokemon => <PokeduxCard pokemon={pokemon}/>)}
+      {pokemons.map(pokemon => <PokeduxCard key={pokemon.id} pokemon={pokemon}/>)}
     </Grid>
   )
 }

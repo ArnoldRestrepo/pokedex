@@ -17,9 +17,9 @@ const useGetPokemons = () => {
         const pokemonList = result.results;
         const pokemonsResult = await Promise.all(pokemonList.map( async pokemon => axios.get(pokemon.url)))
         const pokemonsData = pokemonsResult.map(pokemon => pokemon.data)
-        dispatch(setPokemon(pokemonsData))
+        dispatch(setPokemon(pokemonsData));
       } catch (error) {
-        setError(error);
+        dispatch(setError(error));
       }
       setIsLoading(false);
     }
