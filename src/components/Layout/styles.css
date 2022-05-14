@@ -1,3 +1,15 @@
 .Layout-content {
   margin-top: 62px;
+  position: relative;
+}
+
+
+.Wrapper{
+  width: 98%;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  cursor: pointer;
 }

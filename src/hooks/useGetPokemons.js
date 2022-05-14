@@ -2,12 +2,11 @@ import axios from '../services/axios';
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getPokemons } from '../api/getPokemons';
-import { setPokemon } from '../actions/';
+import { setPokemon, setError } from '../actions/';
 
 const useGetPokemons = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => { 
     async function executeAsyncFunction (){ 
@@ -19,14 +18,15 @@ const useGetPokemons = () => {
         const pokemonsData = pokemonsResult.map(pokemon => pokemon.data)
         dispatch(setPokemon(pokemonsData));
       } catch (error) {
-        dispatch(setError(error));
+        const errorMessage = error.message;
+        dispatch(setError({message: "Ocurrío un error al obtener los pokemons", error: errorMessage}));
       }
       setIsLoading(false);
     }
     executeAsyncFunction();
   },[]);
 
-  return [isLoading, error];
+  return isLoading;
 }
 
 export default useGetPokemons;
