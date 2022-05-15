@@ -15,7 +15,7 @@ export const cleanError = (payload) => ({
   payload,
 })
 
-export const GetPokemonDetail = (payload) => ({
+export const fetchPokemons = (payload) => ({
   type: FETCH_POKEMON_DETAIL,
   payload,
 }) 
