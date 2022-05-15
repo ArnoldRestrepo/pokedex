@@ -1,4 +1,4 @@
-import { SET_POKEMON, SET_ERROR, CLEAN_ERROR, FETCH_POKEMON_DETAIL } from './types';
+import { SET_POKEMON, SET_ERROR, CLEAN_ERROR, FETCH_POKEMON_DETAIL, SET_LOADING } from './types';
 
 export const setPokemon = (payload) => ({
   type: SET_POKEMON,
@@ -19,3 +19,8 @@ export const fetchPokemons = (payload) => ({
   type: FETCH_POKEMON_DETAIL,
   payload,
 }) 
+
+export const setLoading = (payload) => ({
+  type: SET_LOADING,
+  payload,
+})
