@@ -9,3 +9,14 @@
   text-align: center;
   color: #999;
 }
+
+.PokeduxButton-favorite {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.PokeduxButton-favorite:focus{
+  outline: none;
+  transform: scale(1.1);
+}
