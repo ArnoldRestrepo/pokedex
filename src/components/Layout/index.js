@@ -6,7 +6,7 @@ import './styles.css';
 
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
-  const errorMessage = useSelector(state => state.app.error.message);
+  const errorMessage = useSelector(state => state.app.ui.error.message);
   const handleDismiss = () => dispatch(cleanError(""));
 
   return (

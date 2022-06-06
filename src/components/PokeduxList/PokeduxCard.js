@@ -6,7 +6,7 @@ import './style.css'
 
 const PokeduxCard = ({ pokemon }) => {
   const dispatch = useDispatch();
-  const favorites = useSelector(state => state.app.favorites)
+  const favorites = useSelector(state => state.app.pokemons.favorites)
   const { name, types, sprites, id } = pokemon;
 
   const handleFavorite = () => {
